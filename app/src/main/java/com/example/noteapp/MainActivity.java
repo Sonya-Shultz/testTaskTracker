@@ -29,21 +29,29 @@ public class MainActivity extends AppCompatActivity {
         ListOfTasksFragment newListFragment = new ListOfTasksFragment();
         ft.replace(R.id.placeholder_fragment, newListFragment);
 
-        TaskEditFragment newTaskEditFragment = new TaskEditFragment();
-
-        ft.replace(R.id.placeholder_for_task_edit_fragment, newTaskEditFragment);
-
         ft.commit();
 
         setContentView(binding.getRoot());
-        //newTaskEditFragment.getId();
         findViewById(R.id.placeholder_for_task_edit_fragment).setVisibility(View.INVISIBLE);
 
         findViewById(R.id.button_add).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ListView lv = (ListView) findViewById(R.id.list_of_tasks);
-                ((OneTaskViewAdapter) lv.getAdapter()).addNewElement(new TaskData("","",new Date()));
+                TaskData td = new TaskData("","",new Date());
+
+                TaskEditFragment newTaskEditFragment = TaskEditFragment
+                        .newInstance(td, 0);
+
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.placeholder_for_task_edit_fragment, newTaskEditFragment)
+                        .commit();
+
+                findViewById(R.id.placeholder_for_task_edit_fragment).setVisibility(View.VISIBLE);
+                v.setVisibility(View.INVISIBLE);
+
+                //ListView lv = (ListView) findViewById(R.id.list_of_tasks);
+                //((OneTaskViewAdapter) lv.getAdapter()).addNewElement(td);
+
             }
         });
 

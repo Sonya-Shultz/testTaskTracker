@@ -12,20 +12,21 @@
         android:id="@+id/placeholder_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbars="vertical"
         android:minHeight="50dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:layout_gravity="bottom|right"
-        app:layout_anchorGravity="bottom|right" />
+        android:text="+"
+        android:layout_gravity="bottom|end"
+        app:layout_anchorGravity="bottom|right"/>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/placeholder_for_task_edit_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:minHeight="50dp" />
 
 

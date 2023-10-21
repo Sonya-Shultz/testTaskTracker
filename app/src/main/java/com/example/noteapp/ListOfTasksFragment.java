@@ -47,10 +47,6 @@ public class ListOfTasksFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list_of_tasks, container, false);
 
         ArrayList<TaskData> lngList = new ArrayList<>();
-        TaskData tmp = new TaskData("","",new Date());
-        lngList.add(tmp);
-        lngList.add(tmp);
-        lngList.add(tmp);
 
         OneTaskViewAdapter adapter = new OneTaskViewAdapter(view.getContext(), lngList);
 

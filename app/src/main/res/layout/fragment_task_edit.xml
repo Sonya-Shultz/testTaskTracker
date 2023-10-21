@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red"
+    android:background="@color/op_black"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/task_edit_view"
     tools:context=".TaskEditFragment">
@@ -11,9 +11,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_margin="20dp"
         android:padding="10dp"
+        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/black">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/save_task_data_button"
@@ -39,7 +39,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_edit_view"
             android:text="20.03.2005"/>
 
-        <TextView
+        <EditText
             android:id="@+id/text_edit_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             app:layout_constraintTop_toBottomOf="@+id/title_edit_view"
             android:text="Text" />
 
-        <TextView
+        <EditText
             android:id="@+id/title_edit_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
