@@ -22,5 +22,11 @@
         android:layout_gravity="bottom|right"
         app:layout_anchorGravity="bottom|right" />
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/placeholder_for_task_edit_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,12 +1,15 @@
 package com.example.noteapp;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +61,35 @@ public class TaskEditFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_task_edit, container, false);
+        View view = inflater.inflate(R.layout.fragment_task_edit, container, false);
+        Button closeBttn = view.findViewById(R.id.close_edit_task_button);
+        closeBttn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                //clear
+                                view.setVisibility(View.INVISIBLE);
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //save
+                                //clear
+                                view.setVisibility(View.INVISIBLE);
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Close without saving?").setPositiveButton("Close", dialogClickListener)
+                        .setNegativeButton("Save", dialogClickListener).show();
+            }
+
+        });
+        return view;
     }
 }
