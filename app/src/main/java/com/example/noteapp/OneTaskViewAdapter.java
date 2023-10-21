@@ -69,7 +69,7 @@ public class OneTaskViewAdapter extends ArrayAdapter<TaskData> {
 
         titleTextView.setText(taskData.title);
         mainTextView.setText(taskData.text);
-        endDataTextView.setText(taskData.endData.toString());
+        endDataTextView.setText(TaskEditFragment.dateToString(taskData.endData));
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override

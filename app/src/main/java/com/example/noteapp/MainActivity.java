@@ -1,14 +1,8 @@
 package com.example.noteapp;
 
-import android.content.Context;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -48,9 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
                 findViewById(R.id.placeholder_for_task_edit_fragment).setVisibility(View.VISIBLE);
                 v.setVisibility(View.INVISIBLE);
-
-                //ListView lv = (ListView) findViewById(R.id.list_of_tasks);
-                //((OneTaskViewAdapter) lv.getAdapter()).addNewElement(td);
 
             }
         });

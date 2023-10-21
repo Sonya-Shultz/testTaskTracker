@@ -36,8 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_edit_view"
-            android:text="20.03.2005"/>
+            app:layout_constraintTop_toBottomOf="@+id/text_edit_view" />
 
         <EditText
             android:id="@+id/text_edit_view"
