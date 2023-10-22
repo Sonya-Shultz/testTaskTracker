@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NoteApp</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="enter_title">Enter your title</string>
+    <string name="enter_text">Enter your text</string>
+    <string name="date_picker">Pick date</string>
+    <string name="tasks_list">List of task:</string>
+    <string name="empty_text">No text provided</string>
+    <string name="action_settings">Settings</string>
+    <string name="add_new_task">Add new task</string>
+
+</resources>

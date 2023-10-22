@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/cardview_dark_background"
+    android:background="@color/darker_green"
     tools:context=".MainActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -15,13 +15,15 @@
         android:scrollbars="vertical"
         android:minHeight="50dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/button_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="50dp"
+        android:background="@drawable/custom_empty_add_button"
         android:layout_gravity="bottom|end"
-        app:layout_anchorGravity="bottom|right"/>
+        app:layout_anchorGravity="bottom|right"
+        android:contentDescription="@string/add_new_task" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/placeholder_for_task_edit_fragment"
