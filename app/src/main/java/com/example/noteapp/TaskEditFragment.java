@@ -121,6 +121,7 @@ public class TaskEditFragment extends Fragment {
 
                     }
                 }, dateInner.getYear()+1900, dateInner.getMonth(), dateInner.getDate());
+                dialog.getDatePicker().setMinDate(new Date().getTime());
                 dialog.show();
             }
         });

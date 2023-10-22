@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +61,10 @@ public class OneTaskViewAdapter extends ArrayAdapter<TaskData> {
         TextView endDataTextView = view.findViewById(R.id.textEndData);
         Button deleteButton = view.findViewById(R.id.buttonDelete);
         Button editButton = view.findViewById(R.id.buttonEdit);
+
+        ColorStateList colorStateList = ColorStateList.valueOf(
+                Color.parseColor(MyUtil.getColorByDate(taskData.endData, 10)));
+        view.setBackgroundTintList(colorStateList);
 
         titleTextView.setText(taskData.title);
         mainTextView.setText(taskData.text);

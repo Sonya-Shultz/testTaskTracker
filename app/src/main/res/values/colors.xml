@@ -5,6 +5,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#FF00FF00</color>
     <color name="light_green">#E2F3E2</color>
+    <color name="light_greenish">#C6E4C6</color>
+    <color name="light_red">#D88787</color>
     <color name="light_green_op66">#A8ECFDEC</color>
     <color name="dark_green">#759375</color>
     <color name="darker_green_op">#CB192219</color>
