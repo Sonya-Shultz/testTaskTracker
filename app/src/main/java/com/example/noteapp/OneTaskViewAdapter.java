@@ -4,23 +4,16 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.DialogInterface;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 
@@ -69,7 +62,7 @@ public class OneTaskViewAdapter extends ArrayAdapter<TaskData> {
 
         titleTextView.setText(taskData.title);
         mainTextView.setText(taskData.text);
-        endDataTextView.setText(TaskEditFragment.dateToString(taskData.endData));
+        endDataTextView.setText(MyUtil.dateToString(taskData.endData));
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +74,7 @@ public class OneTaskViewAdapter extends ArrayAdapter<TaskData> {
                             case DialogInterface.BUTTON_POSITIVE:
                                 tasksData.remove(position);
                                 notifyDataSetChanged();
+                                DataBaseConnection.getInstance(getContext()).deleteExistingTask(taskData);
                                 break;
 
                             case DialogInterface.BUTTON_NEGATIVE:
@@ -127,7 +121,7 @@ public class OneTaskViewAdapter extends ArrayAdapter<TaskData> {
                 .add(R.id.placeholder_for_task_edit_fragment, newTaskEditFragment)
                 .commit();
 
-        newTaskEditFragment.changeVisibility(view, View.VISIBLE, View.INVISIBLE);
+        MyUtil.changeVisibility(view, View.VISIBLE, View.INVISIBLE);
     }
 }
 

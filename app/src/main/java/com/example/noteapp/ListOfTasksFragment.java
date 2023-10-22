@@ -2,20 +2,14 @@ package com.example.noteapp;
 
 import android.os.Bundle;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,9 +40,9 @@ public class ListOfTasksFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_of_tasks, container, false);
 
-        ArrayList<TaskData> lngList = new ArrayList<>();
+        ArrayList<TaskData> tasksList = DataBaseConnection.getInstance(getContext()).getAllTasks();
 
-        OneTaskViewAdapter adapter = new OneTaskViewAdapter(view.getContext(), lngList);
+        OneTaskViewAdapter adapter = new OneTaskViewAdapter(view.getContext(), tasksList);
 
         ListView listOfTasks = (ListView) view.findViewById(R.id.list_of_tasks);
 

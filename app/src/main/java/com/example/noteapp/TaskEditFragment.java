@@ -19,10 +19,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -74,7 +70,7 @@ public class TaskEditFragment extends Fragment {
         Bundle args = new Bundle();
         args.putString(ARG_TITLE, taskData.title);
         args.putString(ARG_TEXT, taskData.text);
-        args.putString(ARG_DATE, fragment.dateToString(taskData.endData));
+        args.putString(ARG_DATE, MyUtil.dateToString(taskData.endData));
         args.putInt(ARG_ID, taskData.id);
         args.putInt(ARG_POSITION, position);
         fragment.setArguments(args);
@@ -114,17 +110,17 @@ public class TaskEditFragment extends Fragment {
         datePickerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date date = new Date();
+                Date dateInner = MyUtil.stringToDate(date);
                 DatePickerDialog dialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        Date dateTmp = stringToDate(dayOfMonth+"."+(month+1)+"."+year);
+                    public void onDateSet(DatePicker viewDate, int year, int month, int dayOfMonth) {
+                        Date dateTmp = MyUtil.stringToDate(dayOfMonth+"."+(month+1)+"."+year);
 
-                        dateView.setText(dateToString(dateTmp));
+                        dateView.setText(MyUtil.dateToString(dateTmp));
                         setDate(dateTmp);
 
                     }
-                }, date.getYear()+1900, date.getMonth(), date.getDate());
+                }, dateInner.getYear()+1900, dateInner.getMonth(), dateInner.getDate());
                 dialog.show();
             }
         });
@@ -132,14 +128,13 @@ public class TaskEditFragment extends Fragment {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkIfTitleFull(view)) {
-                    showToast(date);
-                    TaskData taskData = new TaskData(title, text, stringToDate(date));
+                if ( MyUtil.checkIfTitleFull(view)) {
+                    TaskData taskData = new TaskData(title, text, MyUtil.stringToDate(date));
                     taskData.id = id;
                     saveData(view, taskData);
-                    changeVisibility(view, View.INVISIBLE, View.VISIBLE);
+                    MyUtil.changeVisibility(view, View.INVISIBLE, View.VISIBLE);
                     closeSelf(view);
-                } else showToast("Empty TITLE!");
+                } else  MyUtil.showToast("Empty TITLE!", getContext());
             }
         });
         closeBtn.setOnClickListener(new View.OnClickListener() {
@@ -150,20 +145,20 @@ public class TaskEditFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which){
                             case DialogInterface.BUTTON_POSITIVE:
-                                changeVisibility(view, View.INVISIBLE, View.VISIBLE);
+                                MyUtil.changeVisibility(view, View.INVISIBLE, View.VISIBLE);
                                 closeSelf(view);
                                 break;
 
                             case DialogInterface.BUTTON_NEGATIVE:
-                                if (checkIfTitleFull(view)) {
-                                    TaskData taskData = new TaskData(title, text, stringToDate(date));
+                                if ( MyUtil.checkIfTitleFull(view)) {
+                                    TaskData taskData = new TaskData(title, text, MyUtil.stringToDate(date));
                                     taskData.id = id;
                                     saveData(view, taskData);
-                                    changeVisibility(view, View.INVISIBLE, View.VISIBLE);
+                                    MyUtil.changeVisibility(view, View.INVISIBLE, View.VISIBLE);
                                     closeSelf(view);
                                 }
                                 else {
-                                    showToast("Empty TITLE!");
+                                    MyUtil.showToast("Empty TITLE!", getContext());
                                 }
                                 break;
                         }
@@ -189,26 +184,20 @@ public class TaskEditFragment extends Fragment {
             ListView lv = (ListView) view.getRootView().findViewById(R.id.list_of_tasks);
             OneTaskViewAdapter ad = (OneTaskViewAdapter) lv.getAdapter();
             if(!ad.isIdInSet(taskData)){
+                DataBaseConnection.getInstance(getContext()).addNewTask(taskData);
                 ad.addNewElement(taskData);
-                //save new
             }else {
-                // edit old
+                DataBaseConnection.getInstance(getContext()).editExistingTask(taskData);
                 ad.changeData(position, taskData);
             }
-            showToast("Data Saved");
+            MyUtil.showToast("Data Saved", getContext());
 
         } catch (Exception e){
-            showToast("Error while saving!");
+            MyUtil.showToast("Error while saving!", getContext());
         }
     }
 
-    void changeVisibility(View view, int visibilityTasks, int visibilityButton){
-        View rootView = view.getRootView();
-        View taskEditView = rootView.findViewById(R.id.placeholder_for_task_edit_fragment);
-        View buttonAdd = rootView.findViewById(R.id.button_add);
-        taskEditView.setVisibility(visibilityTasks);
-        buttonAdd.setVisibility(visibilityButton);
-    }
+
 
     private void closeSelf(View view){
         getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
@@ -235,34 +224,8 @@ public class TaskEditFragment extends Fragment {
         });
     }
 
-    private boolean checkIfTitleFull(View view){
-        EditText title = view.findViewById(R.id.title_edit_view);
-        return title.getText().length() > 0;
-    }
-
-    private void showToast(String text){
-        Toast toast = Toast.makeText(getContext(), text, Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
     private void setDate(Date date){
-        this.date = dateToString(date);
+        this.date = MyUtil.dateToString(date);
     }
 
-    static String dateToString(Date date){
-        DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
-        return formatter.format(date);
-    }
-
-    static Date stringToDate(String dateStr){
-        DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
-        Date date = new Date();
-        try {
-            date = formatter.parse(dateStr);
-        }
-        catch (ParseException e) {
-
-        }
-        return date;
-    }
 }
