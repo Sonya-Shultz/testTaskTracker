@@ -1,4 +1,4 @@
-package com.example.noteapp;
+package com.example.noteapp.fragments;
 
 import android.os.Bundle;
 
@@ -8,6 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import com.example.noteapp.fragments.adapters.OneTaskViewAdapter;
+import com.example.noteapp.R;
+import com.example.noteapp.dataproc.DataBaseConnection;
+import com.example.noteapp.dataproc.TaskData;
 
 import java.util.ArrayList;
 

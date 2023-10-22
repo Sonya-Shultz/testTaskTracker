@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.noteapp.databinding.ActivityMainBinding;
+import com.example.noteapp.dataproc.TaskData;
+import com.example.noteapp.fragments.ListOfTasksFragment;
+import com.example.noteapp.fragments.TaskEditFragment;
 
 import java.util.Date;
 

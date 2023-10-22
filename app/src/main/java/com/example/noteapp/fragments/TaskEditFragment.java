@@ -1,4 +1,4 @@
-package com.example.noteapp;
+package com.example.noteapp.fragments;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -17,7 +17,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.noteapp.util.MyUtil;
+import com.example.noteapp.fragments.adapters.OneTaskViewAdapter;
+import com.example.noteapp.R;
+import com.example.noteapp.dataproc.DataBaseConnection;
+import com.example.noteapp.dataproc.TaskData;
 
 import java.util.Date;
 

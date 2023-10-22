@@ -1,14 +1,14 @@
-package com.example.noteapp;
+package com.example.noteapp.dataproc;
 
 import java.util.Date;
 import java.util.Objects;
 import java.util.Random;
 
 public class TaskData {
-    String title, text;
+    public String title, text;
 
-    int id;
-    Date endData;
+    public int id;
+    public Date endData;
 
     private final int max=500, min=0;
 

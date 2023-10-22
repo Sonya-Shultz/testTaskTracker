@@ -1,4 +1,4 @@
-package com.example.noteapp;
+package com.example.noteapp.util;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.noteapp.R;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,12 +17,12 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class MyUtil {
-    static String dateToString(Date date){
+    public static String dateToString(Date date){
         DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
         return formatter.format(date);
     }
 
-    static Date stringToDate(String dateStr){
+    public static Date stringToDate(String dateStr){
         DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
         Date date = new Date();
         try {
@@ -32,7 +34,7 @@ public class MyUtil {
         return date;
     }
 
-    static void changeVisibility(View view, int visibilityTasks, int visibilityButton){
+    public static void changeVisibility(View view, int visibilityTasks, int visibilityButton){
         View rootView = view.getRootView();
         View taskEditView = rootView.findViewById(R.id.placeholder_for_task_edit_fragment);
         View buttonAdd = rootView.findViewById(R.id.button_add);
@@ -40,17 +42,17 @@ public class MyUtil {
         buttonAdd.setVisibility(visibilityButton);
     }
 
-    static boolean checkIfTitleFull(View view){
+    public static boolean checkIfTitleFull(View view){
         EditText title = view.findViewById(R.id.title_edit_view);
         return title.getText().length() > 0;
     }
 
-    static void showToast(String text, Context context){
+    public static void showToast(String text, Context context){
         Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
         toast.show();
     }
 
-    static String getColorByDate(Date date, int maxDateDiff){
+    public static String getColorByDate(Date date, int maxDateDiff){
         maxDateDiff = (maxDateDiff > 0) ? maxDateDiff : 1;
         Date currentDate = new Date();
         long difference = date.getTime() - currentDate.getTime();

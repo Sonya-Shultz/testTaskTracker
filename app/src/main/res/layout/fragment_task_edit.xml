@@ -6,7 +6,7 @@
     android:background="@color/darker_green_op"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/task_edit_view"
-    tools:context=".TaskEditFragment"
+    tools:context=".fragments.TaskEditFragment"
     android:scrollbars="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout

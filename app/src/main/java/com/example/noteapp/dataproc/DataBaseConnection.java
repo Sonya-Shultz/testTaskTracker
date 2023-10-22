@@ -1,10 +1,12 @@
-package com.example.noteapp;
+package com.example.noteapp.dataproc;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.noteapp.util.MyUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;

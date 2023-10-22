@@ -1,4 +1,4 @@
-package com.example.noteapp;
+package com.example.noteapp.fragments.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,6 +16,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+
+import com.example.noteapp.MainActivity;
+import com.example.noteapp.R;
+import com.example.noteapp.dataproc.DataBaseConnection;
+import com.example.noteapp.dataproc.TaskData;
+import com.example.noteapp.fragments.TaskEditFragment;
+import com.example.noteapp.util.MyUtil;
 
 import java.util.ArrayList;
 
